@@ -23,7 +23,7 @@ export default class Model {
     localStorage.setItem("todos", JSON.stringify(this.todos));
   }
   getTodos() {
-    return this.todos;
+    return this.todos.map((todo) => ({ ...todo }));
   }
   findTodo(id) {
     return this.todos.findIndex((todo) => todo.id === id);
