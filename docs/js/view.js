@@ -9,6 +9,7 @@ export default class View {
     this.addTodoForm.onClick((title, description) =>
       this.addTodo(title, description)
     );
+    this.modal.onClick((id, values) => this.editTodo(id, values));
   }
   setModel(model) {
     this.model = model;
@@ -23,6 +24,13 @@ export default class View {
   }
   toggleCompleted(id) {
     this.model.toggleCompleted(id);
+  }
+  editTodo(id, values) {
+    this.model.editTodo(id, values);
+    const row = document.getElementById(id);
+    row.children[0].innerText = values.title;
+    row.children[1].innerText = values.description;
+    row.children[2].children[0].checked = values.completed;
   }
   removeTodo(id) {
     this.model.removeTodo(id);

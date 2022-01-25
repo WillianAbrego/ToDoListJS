@@ -34,6 +34,11 @@ export default class Model {
     todo.completed = !todo.completed;
     this.save();
   }
+  editTodo(id, values) {
+    const index = this.findTodo(id);
+    Object.assign(this.todos[index], values);
+    this.save();
+  }
   addTodo(title, description) {
     const todo = {
       id: this.currentId++,
